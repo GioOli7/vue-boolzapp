@@ -6,15 +6,23 @@
 }
 
 /* Utilities */
-.flex-column {
+.flex {
     display: flex;
+}
+
+.flex.f-column {
     flex-direction: column;
 }
 
-body {
-    display: flex;
+.flex.just-center {
     justify-content: center;
+}
+
+.flex.align-center {
     align-items: center;
+}
+
+body {
     height: 100vh;
     background: linear-gradient(
         to bottom,
@@ -25,7 +33,6 @@ body {
 }
 
 .container {
-    display: flex;
     width: 80%;
     min-width: 900px;
     height: 90%;

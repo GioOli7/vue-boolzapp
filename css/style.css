@@ -22,6 +22,10 @@
     align-items: center;
 }
 
+.flex.space-between {
+    justify-content: space-between;
+}
+
 body {
     height: 100vh;
     background: linear-gradient(
@@ -64,5 +68,29 @@ body {
 .chat_content-header,
 .chat_content-footer {
     height: 70px;
-    background-color: red;
+    padding: 20px;
+    background-color: #ededed;
+}
+
+/*  */
+.users-avatar {
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+/* action-icons in chat list header */
+/* TODO action icon hover */
+.chat_header-actions {
+    width: 100px;
+}
+
+.chat_header-actions i {
+    color: #bababa;
+    font-size: 20px;
+}
+
+.user-lastlogin {
+    color: #777e82;
+    font-size: 13px;
 }

@@ -18,10 +18,25 @@
     <div id="app" class="container flex">
         <!-- chat list -->
         <aside class="chat_list flex f-column">
-            <header class="chat_list-header">
+            <!-- chat list header -->
+            <header class="chat_list-header flex align-center space-between">
 
+                <!-- user image and name -->
+                <div class="chat_list-user flex align-center">
+                    <img class="users-avatar" src="./img/avatar_io.jpg" alt="user avatar">
+                    <span class="user-name">Nome utente</span>
+                </div>
+
+                <!-- actions -->
+                <div class="chat_header-actions flex space-between">
+                    <i class="fas fa-circle-notch"></i>     <!-- update status -->
+                    <i class="fas fa-comment-alt"></i>      <!-- new chat -->
+                    <i class="fas fa-ellipsis-v"></i>       <!-- menu -->
+                </div>
 
             </header>
+
+            <!-- chat list content -->
             <main class="chat_list-content">
 
             </main>
@@ -31,7 +46,22 @@
         <!-- content -->
         <main class="chat_content flex f-column">
             <!-- header -->
-            <header class="chat_content-header">
+            <header class="chat_content-header flex align-center space-between">
+
+                <!-- user image and name -->
+                <div class="chat_content-user flex align-center">
+                    <img class="users-avatar" src="./img/avatar_1.jpg" alt="user avatar">
+                    <div class="user-info flex f-column">
+                        <span class="user-name">Nome utente</span>
+                        <span class="user-lastlogin">Ultimo accesso alle ore 10.32</span>
+                    </div>
+                </div>
+                <!-- actions -->
+                <div class="chat_header-actions flex space-between">
+                    <i class="fas fa-search"></i>            <!-- search -->
+                    <i class="fas fa-paperclip"></i>        <!-- attach file -->
+                    <i class="fas fa-ellipsis-v"></i>       <!-- menu -->
+                </div>
 
             </header>
 

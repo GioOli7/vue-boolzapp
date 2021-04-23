@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet"> 
@@ -16,19 +18,19 @@
 <body class="flex just-center align-center">
     
     <div id="app" class="container flex">
-        <!-- chat list -->
+<!-- chat list -->
         <aside class="chat_list flex f-column">
             <!-- chat list header -->
-            <header class="chat_list-header flex align-center space-between">
+            <header class="chat_list--header flex align-center space-between">
 
                 <!-- user image and name -->
-                <div class="chat_list-user flex align-center">
+                <div class="chat_list--user flex align-center">
                     <img class="users-avatar" src="./img/avatar_io.jpg" alt="user avatar">
                     <span class="user-name">Nome utente</span>
                 </div>
 
                 <!-- actions -->
-                <div class="chat_header-actions flex space-between">
+                <div class="chat_header--actions flex space-between">
                     <a href="#"><i class="fas fa-circle-notch action-icon"></i></a>     <!-- update status -->
                     <a href="#"><i class="fas fa-comment-alt action-icon"></i></a>      <!-- new chat -->
                     <a href="#"><i class="fas fa-ellipsis-v action-icon"></i> </a>      <!-- menu -->
@@ -37,7 +39,8 @@
             </header>
 
             <!-- chat list content -->
-            <main class="chat_list-content">
+            <main class="chat_list--main">
+
                 <!-- warning for disabled notifications -->
                 <div class="light-warning flex align-center">               
                     <i class="fas fa-bell-slash notifications-icon"></i>     <!-- notification icon -->
@@ -46,17 +49,39 @@
                         <a class="subtext notif">Attiva notifiche desktop</a>
                     </div>
                 </div>
+
+                <!-- search -->
+                <div class="chat_list--search flex just-center align-center">
+                    <a href="#"><i class="fas fa-search"></i></a>
+                    <input type="text" placeholder="cerca o inizia una nuova chat">
+                </div>
+
+                <!-- chat list -->
+                <div class="chat_list--list">
+                    <ul>
+
+                        <!-- chat item -->
+                        <li class="chat_list--chat flex align-center"
+                        v-for="contact in contacts">
+
+                            <img class="users-avatar" :src="'./img/avatar' + contact.avatar +'.jpg'" alt="user avatar">
+                            <span class="user-name">{{contact.name}}</span>
+
+                        </li>
+
+                    </ul>
+                </div>
+                
             </main>
-            
         </aside>
         
-        <!-- content -->
+<!-- content -->
         <main class="chat_content flex f-column">
             <!-- header -->
-            <header class="chat_content-header flex align-center space-between">
+            <header class="chat_content--header flex align-center space-between">
 
                 <!-- user image and name -->
-                <div class="chat_content-user flex align-center">
+                <div class="chat_content--user flex align-center">
                     <img class="users-avatar" src="./img/avatar_1.jpg" alt="user avatar">
                     <div class="text-subtext flex f-column">
                         <span class="user-name">Nome utente</span>
@@ -64,7 +89,7 @@
                     </div>
                 </div>
                 <!-- actions -->
-                <div class="chat_header-actions flex space-between">
+                <div class="chat_header--actions flex space-between">
                     <a href="#"><i class="fas fa-search action-icon"></i></a>           <!-- search -->
                     <a href="#"><i class="fas fa-paperclip action-icon"></i></a>        <!-- attach file -->
                     <a href="#"><i class="fas fa-ellipsis-v action-icon"></i></a>       <!-- menu -->
@@ -73,13 +98,35 @@
             </header>
 
             <!-- content -->
-            <main class="chat_content-content">
+            <main class="chat_content--content flex f-column">
+
+                <!-- message in chat -->
+                <div class="message sent flex f-column">
+                    <!-- text message -->
+                    <span class="message--text">
+                        Dimmi che sei uno sviluppatore senza dirmi che sei uno sviluppatore
+                    </span>
+                    <!-- message info/sending time -->
+                    <span class="message--info">Inviato alle 10.32</span>
+                </div>
+
+                <!-- message in chat -->
+                <div class="message received flex f-column">
+                    <!-- text message -->
+                    <span class="message--text">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum optio impedit voluptatum pariatur quas nam eius, sapiente voluptate quaerat ea esse. Quo, eius ipsa ipsum eos rem harum cupiditate hic.   
+                    </span>
+                    <!-- message info/sending time -->
+                    <span class="message--info">Ricevuto alle 10.33</span>
+                </div>
 
             </main>
 
             <!-- footer -->
-            <footer class="chat_content-footer">
-
+            <footer class="chat_content--footer flex align-center space-between">
+                <a href="#"><i class="far fa-smile footer--icon"></i></a>        <!-- emoticon menu -->
+                <input class="inputTextChat" type="text" placeholder="Scivi un messaggio">
+                <a href="#"><i class="fas fa-microphone footer--icon"></i></a>   <!-- mic icon -->
             </footer>
 
 
@@ -87,5 +134,11 @@
 
     </div>
 
+
+
+
+
+    <!-- js -->
+    <script src="./js/script.js"></script>
 </body>
 </html>

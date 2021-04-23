@@ -90,7 +90,31 @@ body {
     font-size: 20px;
 }
 
-.user-lastlogin {
+/* special gray text */
+.subtext {
     color: #777e82;
     font-size: 13px;
+}
+/* specific style for light-warnign div */
+.subtext.notif {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* div with light warning (reactivate notifications) */
+.light-warning {
+    background-color: #a2dffe;
+    height: 80px;
+    padding: 20px;
+}
+
+.light-warning .notifications-icon {
+    color: #a2dffe;
+    font-size: 20px;
+    background-color: #fff;
+    border-radius: 50%;
+    line-height: 50px;
+    width: 50px;
+    text-align: center;
+    margin-right: 15px;
 }

@@ -38,7 +38,14 @@
 
             <!-- chat list content -->
             <main class="chat_list-content">
-
+                <!-- warning for disabled notifications -->
+                <div class="light-warning flex align-center">               
+                    <i class="fas fa-bell-slash notifications-icon"></i>     <!-- notification icon -->
+                    <div class="text-subtext flex f-column">
+                        <span>Ricevi notifiche di nuovi messaggi</span>
+                        <a class="subtext notif">Attiva notifiche desktop</a>
+                    </div>
+                </div>
             </main>
             
         </aside>
@@ -51,9 +58,9 @@
                 <!-- user image and name -->
                 <div class="chat_content-user flex align-center">
                     <img class="users-avatar" src="./img/avatar_1.jpg" alt="user avatar">
-                    <div class="user-info flex f-column">
+                    <div class="text-subtext flex f-column">
                         <span class="user-name">Nome utente</span>
-                        <span class="user-lastlogin">Ultimo accesso alle ore 10.32</span>
+                        <span class="user-lastlogin subtext">Ultimo accesso alle ore 10.32</span>
                     </div>
                 </div>
                 <!-- actions -->

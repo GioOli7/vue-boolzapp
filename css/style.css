@@ -29,6 +29,7 @@ a {
 .container {
     width: 80%;
     min-width: 900px;
+    max-width: 1200px;
     height: 90%;
     background-color: #fff;
 }
@@ -80,7 +81,7 @@ a {
 /*****************************ASIDE*******************************/
 /**** left aside****/
 .chat_list {
-    flex-basis: 35%;
+    flex-basis: 33%;
     border-right: 1px solid lightgray;
 }
 
@@ -183,7 +184,7 @@ a {
     padding: 50px 80px;
 }
 
-/*  */
+/* Bubble that contain text messagge */
 .message {
     padding: 20px;
     min-width: 200px;
@@ -193,16 +194,19 @@ a {
     margin-bottom: 20px;
 }
 
+/* style for sent message */
 .message.sent {
     align-self: end;
     background-color: #ddfabf;
 }
 
+/* style for received message */
 .message.received {
     align-self: start;
     background-color: #fff;
 }
 
+/* message info/sending time */
 .message--info {
     margin-top: 5px;
     color: rgb(148, 148, 148);
@@ -210,6 +214,7 @@ a {
     align-self: end;
 }
 
+/* area with input for chatting, emoticon and mic */
 .chat_content--footer {
     background-color: #f4f0ed;
     padding-left: 0;

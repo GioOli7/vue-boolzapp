@@ -85,7 +85,7 @@ body {
     width: 100px;
 }
 
-.chat_header-actions i {
+.chat_header-actions .action-icon {
     color: #bababa;
     font-size: 20px;
 }

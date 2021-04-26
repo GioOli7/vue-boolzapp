@@ -87,12 +87,16 @@ const app = new Vue({
                 ],
             },
         ],
-        selectedIndex: 0,
-        myMessage: '',
-    // end data
+        selectedIndex: 0,   // index of selected contact in chat list
+        searchContact: "",  // string for searching contact in chat list
+        myMessage: '',      // my chat message
+        // end data
     },
     methods: {
-        showChat(index) {
+        /**
+         * Give index of selected contact in chat list
+         */
+        getContactIndex(index) {
             this.selectedIndex = index;
         },
 
@@ -123,5 +127,14 @@ const app = new Vue({
                 }, 2000)
             }
         },
+
+        search() {
+            query = this.searchContact.toLowerCase();
+            this.contacts.forEach(contact => {
+                contactName = contact.name.toLowerCase()
+                contact.visible = contactName.includes(query);
+            })
+        },
+
     }
 })

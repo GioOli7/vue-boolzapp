@@ -18,7 +18,7 @@
 <body class="flex just-center align-center">
     
     <div id="app" class="container flex">
-<!-- chat list -->
+        <!-- ASIDE chat list -->
         <aside class="chat_list flex f-column">
             <!-- chat list header -->
             <header class="chat_list--header flex align-center space-between">
@@ -28,7 +28,6 @@
                     <img class="users-avatar" src="./img/avatar_io.jpg" alt="user avatar">
                     <span class="user-name">Nome utente</span>
                 </div>
-
                 <!-- actions -->
                 <div class="chat_header--actions flex space-between">
                     <a href="#"><i class="fas fa-circle-notch action-icon"></i></a>     <!-- update status -->
@@ -52,8 +51,12 @@
 
                 <!-- search -->
                 <div class="chat_list--search flex just-center align-center">
+
                     <a href="#"><i class="fas fa-search"></i></a>
-                    <input type="text" placeholder="cerca o inizia una nuova chat">
+                    <!-- search contact in chat list -->
+                    <input type="text" placeholder="cerca o inizia una nuova chat"
+                    v-model = "searchContact" @keyup = "search">
+                    
                 </div>
 
                 <!-- chat list -->
@@ -62,7 +65,8 @@
 
                         <!-- chat item -->
                         <li class="chat_list--chat flex align-center"
-                        v-for="(contact, index) in contacts" @click="showChat(index)" :class="{ active: selectedIndex == index }">
+                        v-for="(contact, index) in contacts" @click="getContactIndex(index)" :class="{ active: selectedIndex == index }"
+                        v-if = "contact.visible">
 
                             <img class="users-avatar" :src="'./img/avatar' + contact.avatar +'.jpg'" alt="user avatar">
                             <span class="user-name">{{contact.name}}</span>
@@ -75,7 +79,7 @@
             </main>
         </aside>
         
-<!-- content -->
+        <!-- content -->
         <main class="chat_content flex f-column">
             <!-- header -->
             <header class="chat_content--header flex align-center space-between">
@@ -115,10 +119,15 @@
 
             <!-- footer -->
             <footer class="chat_content--footer flex align-center space-between">
-                <a href="#"><i class="far fa-smile footer--icon"></i></a>        <!-- emoticon menu -->
+
+                <!-- emoticon menu -->
+                <a href="#"><i class="far fa-smile footer--icon"></i></a>
+                <!-- Chat input text -->
                 <input class="inputTextChat" type="text" placeholder="Scivi un messaggio"
                 v-model="myMessage" v-on:keyup.enter="submit">
-                <a href="#"><i class="fas fa-microphone footer--icon"></i></a>   <!-- mic icon -->
+                   <!-- mic icon -->
+                <a href="#"><i class="fas fa-microphone footer--icon"></i></a>
+                
             </footer>
 
 

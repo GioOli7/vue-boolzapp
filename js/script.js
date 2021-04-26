@@ -87,6 +87,41 @@ const app = new Vue({
                 ],
             },
         ],
+        selectedIndex: 0,
+        myMessage: '',
     // end data
+    },
+    methods: {
+        showChat(index) {
+            this.selectedIndex = index;
+        },
+
+        submit() {
+            // TODO data con date.js
+
+            myMessage = this.myMessage;
+            this.contacts[this.selectedIndex].messages.push(
+                {
+                    date: '10/01/2020 15:30:55',
+                    message: myMessage,
+                    status: 'sent'
+                }
+            )
+            
+            // reset field
+            this.myMessage = '';
+
+            // auto-response "bot"
+            const timerID = setInterval(() => {
+                this.contacts[this.selectedIndex].messages.push(
+                    {
+                        date: '10/01/2020 15:30:55',
+                        message: 'ok',
+                        status: 'received'
+                    }
+                )
+                clearInterval(timerID);
+            }, 1000)
+        },
     }
 })

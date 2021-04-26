@@ -62,7 +62,7 @@
 
                         <!-- chat item -->
                         <li class="chat_list--chat flex align-center"
-                        v-for="contact in contacts">
+                        v-for="(contact, index) in contacts" @click="showChat(index)" :class="{ active: selectedIndex == index }">
 
                             <img class="users-avatar" :src="'./img/avatar' + contact.avatar +'.jpg'" alt="user avatar">
                             <span class="user-name">{{contact.name}}</span>
@@ -82,9 +82,9 @@
 
                 <!-- user image and name -->
                 <div class="chat_content--user flex align-center">
-                    <img class="users-avatar" src="./img/avatar_1.jpg" alt="user avatar">
+                    <img class="users-avatar" :src="'./img/avatar' + contacts[selectedIndex].avatar +'.jpg'" alt="user avatar">
                     <div class="text-subtext flex f-column">
-                        <span class="user-name">Nome utente</span>
+                        <span class="user-name">{{contacts[selectedIndex].name}}</span>
                         <span class="user-lastlogin subtext">Ultimo accesso alle ore 10.32</span>
                     </div>
                 </div>
@@ -101,23 +101,14 @@
             <main class="chat_content--content flex f-column">
 
                 <!-- message in chat -->
-                <div class="message sent flex f-column">
+                <div class="message flex f-column"
+                v-for="message in contacts[selectedIndex].messages" :class="message.status">
                     <!-- text message -->
                     <span class="message--text">
-                        Dimmi che sei uno sviluppatore senza dirmi che sei uno sviluppatore
+                        {{message.message}}
                     </span>
                     <!-- message info/sending time -->
-                    <span class="message--info">Inviato alle 10.32</span>
-                </div>
-
-                <!-- message in chat -->
-                <div class="message received flex f-column">
-                    <!-- text message -->
-                    <span class="message--text">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsum optio impedit voluptatum pariatur quas nam eius, sapiente voluptate quaerat ea esse. Quo, eius ipsa ipsum eos rem harum cupiditate hic.   
-                    </span>
-                    <!-- message info/sending time -->
-                    <span class="message--info">Ricevuto alle 10.33</span>
+                    <span class="message--info">{{message.date}}</span>
                 </div>
 
             </main>
@@ -125,7 +116,8 @@
             <!-- footer -->
             <footer class="chat_content--footer flex align-center space-between">
                 <a href="#"><i class="far fa-smile footer--icon"></i></a>        <!-- emoticon menu -->
-                <input class="inputTextChat" type="text" placeholder="Scivi un messaggio">
+                <input class="inputTextChat" type="text" placeholder="Scivi un messaggio"
+                v-model="myMessage" v-on:keyup.enter="submit">
                 <a href="#"><i class="fas fa-microphone footer--icon"></i></a>   <!-- mic icon -->
             </footer>
 

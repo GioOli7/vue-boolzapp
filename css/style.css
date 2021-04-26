@@ -83,23 +83,27 @@ a {
 .chat_list {
     flex-basis: 33%;
     border-right: 1px solid lightgray;
+    overflow-y: auto;
 }
 
 /* main section with chat list */
 .chat_list--main {
     flex-grow: 1;
-    overflow-y: auto;
 }
 
 /* action-icons in chat list header */
-/* TODO action icon hover */
 .chat_header--actions {
     width: 100px;
 }
 
 .chat_header--actions .action-icon {
     color: #bababa;
+    transition: color 0.2s;
     font-size: 20px;
+}
+
+.action-icon:hover {
+    color: #32a093;
 }
 
 /* div with light warning (reactivate notifications) */
@@ -160,6 +164,15 @@ a {
 /* chat item in list */
 .chat_list--chat {
     height: 80px;
+    cursor: pointer;
+}
+
+.chat_list--chat:hover {
+    background-color: rgba(162, 223, 254, 0.08);
+}
+
+.chat_list--chat.active {
+    background-color: rgba(162, 223, 254, 0.2);
 }
 
 .chat_list--chat:not(:last-child) {
@@ -180,6 +193,7 @@ a {
 
 .chat_content--content {
     flex-grow: 1;
+    overflow-y: auto;
     background-image: url("../img/mine.jpg");
     padding: 50px 80px;
 }

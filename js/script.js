@@ -1,6 +1,5 @@
 // dayjs
 dayjs.locale('it');
-dayjs.extend(dayjs_plugin_relativeTime);
 const dateFormat = 'DD MMMM - HH:mm';
 
 // MAIN
@@ -145,7 +144,7 @@ const app = new Vue({
                     )
                     this.scrollToEnd();
                     this.getLastLogin();
-                }, 1000)
+                }, 2000)
             }
         },
 

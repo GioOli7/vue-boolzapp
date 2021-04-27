@@ -112,7 +112,6 @@ const app = new Vue({
          * Submit your chat message
          */
         submit() {
-            // TODO data con date.js
             if (this.myMessage != "") {
                 myMessage = this.myMessage;
                 this.contacts[this.selectedIndex].messages.push(
@@ -156,7 +155,6 @@ const app = new Vue({
          */
         random(max) {
             return Math.floor( Math.random() * max);
-
         },
 
         /**
@@ -165,6 +163,6 @@ const app = new Vue({
         randAnswer() {
             let randIndex = this.random(this.answers.length - 1)
             return randAnsw = this.answers[randIndex];
-        }
+        },
     }
 })

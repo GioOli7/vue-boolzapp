@@ -1,3 +1,9 @@
+// dayjs
+dayjs.locale('it');
+dayjs.extend(dayjs_plugin_relativeTime);
+const dateFormat = 'DD MMMM - HH:mm';
+
+// MAIN
 const app = new Vue({
     el: "#app",
     data: {
@@ -9,17 +15,17 @@ const app = new Vue({
                 visible: true,
                 messages: [
                     {
-                        date: '10/01/2020 15:30:55',
+                        date: dayjs().subtract(50, 'minute').format(dateFormat),
                         message: 'Hai portato a spasso il cane?',
                         status: 'sent'
                     },
                     {
-                        date: '10/01/2020 15:50:00',
+                        date: dayjs().subtract(49, 'minute').format(dateFormat),
                         message: 'Ricordati di dargli da mangiare',
                         status: 'sent'
                     },
                     {
-                        date: '10/01/2020 16:15:22',
+                        date: dayjs().subtract(31, 'minute').format(dateFormat),
                         message: 'Tutto fatto!',
                         status: 'received'
                     }
@@ -31,17 +37,17 @@ const app = new Vue({
                 visible: true,
                 messages: [
                     {
-                        date: '20/03/2020 16:30:00',
+                        date: dayjs().subtract(27, 'hour').format(dateFormat),
                         message: 'Ciao come stai?',
                         status: 'sent'
                     },
                     {
-                        date: '20/03/2020 16:30:55',
+                        date: dayjs().subtract(49, 'minute').format(dateFormat),
                         message: 'Bene grazie! Stasera ci vediamo?',
                         status: 'received'
                     },
                     {
-                        date: '20/03/2020 16:35:00',
+                        date: dayjs().subtract(12, 'minute').format(dateFormat),
                         message: 'Mi piacerebbe ma devo andare a fare la spesa.',
                         status: 'sent'
                     }
@@ -53,17 +59,17 @@ const app = new Vue({
                 visible: true,
                 messages: [
                     {
-                        date: '28/03/2020 10:10:40',
+                        date: dayjs().subtract(72, 'minute').format(dateFormat),
                         message: 'La Marianna va in campagna',
                         status: 'received'
                     },
                     {
-                        date: '28/03/2020 10:20:10',
+                        date: dayjs().subtract(20, 'minute').format(dateFormat),
                         message: 'Sicuro di non aver sbagliato chat?',
                         status: 'sent'
                     },
                     {
-                        date: '28/03/2020 16:15:22',
+                        date: dayjs().subtract(16, 'minute').format(dateFormat),
                         message: 'Ah scusa!',
                         status: 'received'
                     }
@@ -75,18 +81,20 @@ const app = new Vue({
                 visible: true,
                 messages: [
                     {
-                        date: '10/01/2020 15:30:55',
+                        date: dayjs().subtract(46, 'minute').format(dateFormat),
                         message: 'Lo sai che ha aperto una nuova pizzeria?',
                         status: 'sent'
                     },
                     {
-                        date: '10/01/2020 15:50:00',
+                        date: dayjs().subtract(4, 'minute').format(dateFormat),
                         message: 'Si, ma preferirei andare al cinema',
                         status: 'received'
                     }
                 ],
             },
         ],
+        answers: [
+            'Va Bene!', 'Ok, a domani', 'Certamente', "Senz'altro", 'Come dici tu', 'Potrebbe andare', 'Meglio così', 'La fai facile', 'Certo come no', 'Potresti essere più specifico?', 'Ovvero?', 'Potresti spiegarti meglio?', 'Non mi sembra male', 'Sicuro?', 'Pensaci bene', 'Dubito', 'Tu che mi consigli?', 'Se lo dici tu..',],
         selectedIndex: 0,   // index of selected contact in chat list
         searchContact: "",  // string for searching contact in chat list
         myMessage: '',      // my chat message
@@ -100,13 +108,16 @@ const app = new Vue({
             this.selectedIndex = index;
         },
 
+        /**
+         * Submit your chat message
+         */
         submit() {
             // TODO data con date.js
             if (this.myMessage != "") {
                 myMessage = this.myMessage;
                 this.contacts[this.selectedIndex].messages.push(
                     {
-                        date: '10/01/2020 15:30:55',
+                        date: dayjs().format(dateFormat),
                         message: myMessage,
                         status: 'sent'
                     }
@@ -117,17 +128,21 @@ const app = new Vue({
                 
                 // auto-response "bot"
                 setTimeout(() => {
+                    // randAnsw = this.answers[this.random(this.answers.length)];
                     this.contacts[this.selectedIndex].messages.push(
                         {
-                            date: '10/01/2020 15:30:55',
-                            message: 'ok',
+                            date: dayjs().format(dateFormat),
+                            message: this.randAnswer(),
                             status: 'received'
                         }
                     )
-                }, 2000)
+                }, 1000)
             }
         },
 
+        /**
+         * allow visibility of contacts based on your search query
+         */
         search() {
             query = this.searchContact.toLowerCase();
             this.contacts.forEach(contact => {
@@ -136,5 +151,20 @@ const app = new Vue({
             })
         },
 
+        /**
+         * random index
+         */
+        random(max) {
+            return Math.floor( Math.random() * max);
+
+        },
+
+        /**
+         * return a random answer from array of strings
+         */
+        randAnswer() {
+            let randIndex = this.random(this.answers.length - 1)
+            return randAnsw = this.answers[randIndex];
+        }
     }
 })

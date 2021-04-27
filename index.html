@@ -124,7 +124,7 @@
                 <a href="#"><i class="far fa-smile footer--icon"></i></a>
                 <!-- Chat input text -->
                 <input class="inputTextChat" type="text" placeholder="Scivi un messaggio"
-                v-model="myMessage" v-on:keyup.enter="submit">
+                v-model.trim = "myMessage" v-on:keyup.enter="submit">
                    <!-- mic icon -->
                 <a href="#"><i class="fas fa-microphone footer--icon"></i></a>
                 
@@ -138,6 +138,13 @@
 
 
 
+
+    <!------- DAYJS ------->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
+    <!-- locale -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/locale/it.js"></script>
+    <!-- relative time -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/plugin/relativeTime.js"></script>
 
     <!-- js -->
     <script src="./js/script.js"></script>

@@ -94,18 +94,24 @@ const app = new Vue({
             },
         ],
         answers: [
-            'Va Bene!', 'Ok, a domani', 'Certamente', "Senz'altro", 'Come dici tu', 'Potrebbe andare', 'Meglio così', 'La fai facile', 'Certo come no', 'Potresti essere più specifico?', 'Ovvero?', 'Potresti spiegarti meglio?', 'Non mi sembra male', 'Sicuro?', 'Pensaci bene', 'Dubito', 'Tu che mi consigli?', 'Se lo dici tu..',],
+            'Va Bene!', 'Ok, a domani', 'Certamente', "Senz'altro", 'Come dici tu', 'Potrebbe andare', 'Meglio così', 'La fai facile', 'Certo come no', 'Potresti essere più specifico?', 'Ovvero?', 'Potresti spiegarti meglio?', 'Non mi sembra male', 'Sicuro?', 'Pensaci bene', 'Dubito', 'Tu che mi consigli?', 'Se lo dici tu..',
+        ],
         selectedIndex: 0,   // index of selected contact in chat list
         searchContact: "",  // string for searching contact in chat list
         myMessage: '',      // my chat message
+        lastLoginSelected: '',  // last contact login
         // end data
+    },
+    created() {
+        this.getLastLogin()
     },
     methods: {
         /**
          * Give index of selected contact in chat list
          */
         getContactIndex(index) {
-            this.selectedIndex = index;
+            this.selectedIndex = index;// console.log(this.contacts[this.selectedIndex].messages[this.contacts[this.selectedIndex].messages.length-1].date);
+            this.getLastLogin();
         },
 
         /**
@@ -135,6 +141,7 @@ const app = new Vue({
                             status: 'received'
                         }
                     )
+                    this.getLastLogin();
                 }, 1000)
             }
         },
@@ -164,5 +171,17 @@ const app = new Vue({
             let randIndex = this.random(this.answers.length - 1)
             return randAnsw = this.answers[randIndex];
         },
+
+        /**
+         * returns the date of the last login based on the date of the last message of the contact
+         */
+        getLastLogin() {
+            this.contacts[this.selectedIndex].messages.forEach(message => {
+                if (message.status === 'received'){
+                    return lastReceived = message.date;
+                }
+            })
+            this.lastLoginSelected = lastReceived;
+        }
     }
 })

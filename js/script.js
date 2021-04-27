@@ -171,7 +171,8 @@ const app = new Vue({
          * return a random answer from array of strings
          */
         randAnswer() {
-            let randIndex = this.random(this.answers.length - 1)
+            len = this.answers.length - 1;
+            let randIndex = this.random(len);
             return randAnsw = this.answers[randIndex];
         },
 

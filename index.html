@@ -102,20 +102,20 @@
             </header>
 
             <!-- content -->
-            <main id="chat--content" class="chat_content--content flex f-column">
-
-                <!-- message in chat -->
-                <div class="message flex f-column"
-                v-for="message in contacts[selectedIndex].messages" :class="message.status">
-                    <!-- text message -->
-                    <span class="message--text">
-                        {{message.message}}
-                    </span>
-                    <!-- message info/sending time -->
-                    <span class="message--info">{{message.date}}</span>
-                </div>
-
-            </main>
+            <div id="wrap" class="chat_content--wrap">
+                <main id="chat--content" class="chat_content--content flex f-column">
+                    <!-- message in chat -->
+                    <div class="message flex f-column"
+                    v-for="message in contacts[selectedIndex].messages" :class="message.status">
+                        <!-- text message -->
+                        <span class="message--text">
+                            {{message.message}}
+                        </span>
+                        <!-- message info/sending time -->
+                        <span class="message--info">{{message.date}}</span>
+                    </div>
+                </main>
+            </div>
 
             <!-- footer -->
             <footer class="chat_content--footer flex align-center space-between">

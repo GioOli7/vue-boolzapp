@@ -187,15 +187,20 @@ a {
 /* *******************   MAIN CONTENT - RIGHT SIDE   ******************/
 
 /* right side with chat content */
+.chat_content--wrap {
+    flex-grow: 1;
+    overflow-y: auto;
+    background-image: url("../img/mine.jpg");
+}
+
+
 .chat_content {
     flex-grow: 1;
 }
 
 .chat_content--content {
-    flex-grow: 1;
-    overflow-y: auto;
-    background-image: url("../img/mine.jpg");
     padding: 50px 80px;
+    padding-bottom: 0px;
 }
 
 /* Bubble that contain text messagge */

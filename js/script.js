@@ -189,7 +189,7 @@ const app = new Vue({
 
         scrollToEnd() {
             setTimeout(() => {
-                let chat = document.querySelector("#chat--content");
+                let chat = document.querySelector("#wrap");
                 chat.scrollTop = chat.scrollHeight + 100;
                 // imposto 100 come valore assurdo in quanto anche se impostato su un 
                 // valore superiore al massimo disponibile per l'elemento, 

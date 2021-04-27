@@ -126,7 +126,9 @@ const app = new Vue({
                         message: myMessage,
                         status: 'sent'
                     }
-                )
+                ) 
+                
+                this.scrollToEnd();
                 
                 // reset field
                 this.myMessage = '';
@@ -141,6 +143,7 @@ const app = new Vue({
                             status: 'received'
                         }
                     )
+                    this.scrollToEnd();
                     this.getLastLogin();
                 }, 1000)
             }
@@ -182,6 +185,18 @@ const app = new Vue({
                 }
             })
             this.lastLoginSelected = lastReceived;
-        }
+        },
+
+        scrollToEnd() {
+            setTimeout(() => {
+                let chat = document.querySelector("#chat--content");
+                chat.scrollTop = chat.scrollHeight + 100;
+                // imposto 100 come valore assurdo in quanto anche se impostato su un 
+                // valore superiore al massimo disponibile per l'elemento, 
+                // scrollTop si assesterà sul valore massimo.
+            }, 50)
+            // il delay è necessario per il corretto funzionamento,
+            // senza non riesce a scrollare fino alla fine.
+        },
     }
 })

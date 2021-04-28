@@ -83,12 +83,13 @@ a {
 .chat_list {
     flex-basis: 33%;
     border-right: 1px solid lightgray;
-    overflow-y: auto;
 }
 
 /* main section with chat list */
 .chat_list--main {
     flex-grow: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
 }
 
 /* action-icons in chat list header */

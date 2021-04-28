@@ -95,10 +95,12 @@ const app = new Vue({
         answers: [
             'Va Bene!', 'Ok, a domani', 'Certamente', "Senz'altro", 'Come dici tu', 'Potrebbe andare', 'Meglio così', 'La fai facile', 'Certo come no', 'Potresti essere più specifico?', 'Ovvero?', 'Potresti spiegarti meglio?', 'Non mi sembra male', 'Sicuro?', 'Pensaci bene', 'Dubito', 'Tu che mi consigli?', 'Se lo dici tu..',
         ],
+        emoticon: ["😂","😝","😁","😱","👉","🙌","🍻","🔥","🌈","☀","🎈","🌹","💄","🎀","⚽","🎾","🏁","😡","👿","🐻","🐶","🐬","🐟","🍀","👀","🚗","🍎","💝","💙","👌","❤","😍","😉","😓","😳","💪","💩","🍸","🔑","💖","🌟","🎉","🌺","🎶","👠","🏈","⚾","🏆","👽","💀","🐵","🐮","🐩","🐎","💣","👃","👂","🍓","💘","💜","👊","💋","😘","😜","😵","🙏","👋","🚽","💃","💎","🚀","🌙","🎁","⛄","🌊","⛵","🏀","🎱","💰","👶","👸","🐰","🐷","🐍","🐫","🔫","👄","🚲","🍉","💛","💚"],
         selectedIndex: 0,   // index of selected contact in chat list
         searchContact: "",  // string for searching contact in chat list
         myMessage: '',      // my chat message
         lastLoginSelected: '',  // last contact login
+        emojiIsVisible: false,
         // end data
     },
     created() {
@@ -127,6 +129,7 @@ const app = new Vue({
                     }
                 ) 
                 
+                this.emojiIsVisible = false;
                 this.scrollToEnd();
                 
                 // reset field
@@ -160,6 +163,23 @@ const app = new Vue({
         },
 
         /**
+         * toggle emoji visibility
+         */
+        showEmoji() {
+            this.emojiIsVisible = this.emojiIsVisible ? false : true;
+            this.scrollToEnd();
+        },
+
+        /**
+         * add emoji in the chat input text
+         */
+        addEmoji(index) {
+            this.myMessage += `${this.emoticon[index]}`;
+            // riporto il focus sull input text della chat
+            this.$refs.chatInput.focus();
+        },
+
+        /**
          * random index
          */
         random(max) {
@@ -187,6 +207,9 @@ const app = new Vue({
             this.lastLoginSelected = lastReceived;
         },
 
+        /**
+         * scoll to end
+         */
         scrollToEnd() {
             setTimeout(() => {
                 let chat = document.querySelector("#wrap");
@@ -194,7 +217,7 @@ const app = new Vue({
                 // imposto 100 come valore assurdo in quanto anche se impostato su un 
                 // valore superiore al massimo disponibile per l'elemento, 
                 // scrollTop si assesterà sul valore massimo.
-            }, 50)
+            }, 40)
             // il delay è necessario per il corretto funzionamento,
             // senza non riesce a scrollare fino alla fine.
         },

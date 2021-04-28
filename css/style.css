@@ -191,11 +191,14 @@ a {
     flex-grow: 1;
     overflow-y: auto;
     background-image: url("../img/mine.jpg");
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
 }
 
 
 .chat_content {
     flex-grow: 1;
+    flex-basis: 67%;
 }
 
 .chat_content--content {
@@ -261,4 +264,20 @@ a {
     text-align: center;
     font-size: 25px;
     color: gray;
+}
+
+.emoji_panel {
+    flex-wrap: wrap;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 130px;
+    border-top: 2px solid #ffe196;
+    scrollbar-width: thin;
+}
+
+.emoji_item {
+    font-size: 20px;
+    width: calc(100% / 18);
+    margin-bottom: 10px;
+    text-align: center;
 }

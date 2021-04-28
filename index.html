@@ -118,16 +118,29 @@
             </div>
 
             <!-- footer -->
-            <footer class="chat_content--footer flex align-center space-between">
+            <footer>
+                <!-- emoj panel -->
+                <div class="emoji_panel flex"
+                v-show = "emojiIsVisible">
 
-                <!-- emoticon menu -->
-                <a href="#"><i class="far fa-smile footer--icon"></i></a>
-                <!-- Chat input text -->
-                <input class="inputTextChat" type="text" placeholder="Scivi un messaggio"
-                v-model.trim = "myMessage" v-on:keyup.enter="submit">
-                   <!-- mic icon -->
-                <a href="#"><i class="fas fa-microphone footer--icon"></i></a>
+                    <a href="#" class="emoji_item"
+                    v-for = "(emoji, index) in emoticon"
+                    @click = "addEmoji(index)"
+                    >
+                    {{emoji}}</a>
+
+                </div>
+                <!-- input chat and emoj/mic icons -->
+                <div class="chat_content--footer flex align-center space-between">
+                    <!-- emoticon menu -->
+                    <a href="#"><i @click="showEmoji" class="far fa-smile footer--icon"></i></a>
+                    <!-- Chat input text -->
+                    <input class="inputTextChat" type="text" placeholder="Scivi un messaggio"
+                    v-model.trim = "myMessage" v-on:keyup.enter="submit" ref="chatInput">
+                       <!-- mic icon -->
+                    <a href="#"><i class="fas fa-microphone footer--icon"></i></a>
                 
+                </div>
             </footer>
 
 

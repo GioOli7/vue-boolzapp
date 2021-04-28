@@ -273,6 +273,7 @@ a {
     max-height: 130px;
     border-top: 2px solid #ffe196;
     scrollbar-width: thin;
+    background-color: #f5f5f5;
 }
 
 .emoji_item {

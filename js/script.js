@@ -114,6 +114,7 @@ const app = new Vue({
             this.selectedIndex = index;// console.log(this.contacts[this.selectedIndex].messages[this.contacts[this.selectedIndex].messages.length-1].date);
             this.getLastLogin();
             this.scrollToEnd();
+            this.emojiIsVisible = false;
         },
 
         /**
@@ -169,6 +170,7 @@ const app = new Vue({
         showEmoji() {
             this.emojiIsVisible = this.emojiIsVisible ? false : true;
             this.scrollToEnd();
+            this.scrollEmojiToTop()
         },
 
         /**
@@ -222,5 +224,12 @@ const app = new Vue({
             // il delay è necessario per il corretto funzionamento,
             // senza non riesce a scrollare fino alla fine.
         },
+
+        scrollEmojiToTop() {
+            setTimeout(() => {
+                let panel = document.querySelector("#emoji-panel");
+                panel.scrollTop = -panel.scrollHeight;
+            }, 40)
+        }
     }
 })
